@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Ol | SMA Psikolojik Destek Platformu</title>
+    <link rel="stylesheet" href="sma_style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+<body>
+
+<header><h1> SMA Psikolojik Destek Platformu</h1></header>
+<!-- Sayfa linklerimiz-->
+<nav>
+<a href="#" onclick="git('sma.html')">Ana Sayfa</a>
+<a href="#" onclick="git('kayit.html')">Kayıt Ol</a>
+<a href="#" onclick="git('notlar.html')">Sen de Bir Not Bırak</a>
+<a href="#" onclick="git('esles.html')">Eşleş ve Sohbet Et</a>
+<a href="#" onclick="git('hakkimizda.html')">Hakkımızda</a>
+</nav>
+
+<div id="successAlert" class="alert alert-success" role="alert" style="display: none;">
+  Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...
+</div>
+
+<!-- Kayıt olma bölümü-->
+
+<section>
+<h2>Kayıt Ol</h2>
+<!-- API destekli rastgele destek mesajı -->
+<p id="destekMesaji" class="alert alert-info">💙 Yalnız değilsiniz, buradayız.</p>
+ 
+
+<input type="text" size="30px" id="ad" placeholder="Adınız"><br><br>
+<input type="number" size="30px"  id="cocukYas" placeholder="Çocuğunuzun Yaşı"><br><br>
+<input type="number" size="30px" id="sure" placeholder="Hastalıkla Mücadele Süresi (yıl)"><br><br>
+<input type="password" size="30px" id="sifre" placeholder="Şifre"><br><br>
+<input type="text" size="30px" id="telefon" placeholder="Telefon Numaranız (905xxxxxxxxx)"><br><br>
+
+
+
+<button onclick="kayitOl()">Kayıt Ol</button>
+<button onclick="window.location.href='giris.html'">Giriş Yap</button>
+
+<script>
+
+//Kayıt Olma İşlemi 
+function kayitOl() {
+    let ad= document.getElementById("ad").value;
+    let cocukYas= document.getElementById("cocukYas").value;
+    let sure= document.getElementById("sure").value;
+    let sifre= document.getElementById("sifre").value;
+    let telefon = document.getElementById("telefon").value;
+
+
+    if (!ad || !telefon || !cocukYas || !sure || !sifre) {
+    return alert("Lütfen tüm alanları doldurun!");
+}}
+
+    let aileler = JSON.parse(localStorage.getItem("aileler") || "[]");
+
+    aileler.push({
+        ad: ad,
+        cocukYas: Number(cocukYas),
+        sure: Number(sure),
+        sifre: sifre,
+        telefon: telefon
+    });
+
+
+localStorage.setItem("aileler", JSON.stringify(aileler));
+document.getElementById("successAlert").style.display = "block";
+setTimeout(() => {
+  window.location.href = "giris.html";
+}, 2000);
+
+setTimeout(() => {
+  document.getElementById("successAlert").style.display = "none";
+  window.location.href = "giris.html";
+}, 2000);
+
+
+//Destek Mesajı API'yi Entegre etme
+
+// Sayfa tamamen yüklendiğinde çalışması için
+document.addEventListener("DOMContentLoaded", function() {
+
+    // İngilizce destek mesajı veren API'ye istek atılır
+    fetch("https://zenquotes.io/api/random")
+
+      // API'den gelen cevap JSON formatına çevrilir
+      .then(res => res.json())
+
+      // JSON içinden mesaj alınır
+      .then(data => {
+
+          // İngilizce gelen destek mesajı değişkene atanır
+          const englishText = data[0].q;
+
+          // İngilizce mesaj türkçeye çevrilmek üzere
+          // ücretsiz çeviri API'sine gönderilir
+          return fetch("https://libretranslate.de/translate", {
+
+              // POST isteği gönderiyoruz
+              method: "POST",
+
+              // Gönderilen verinin JSON olduğunu belirtiyoruz
+              headers: {
+                  "Content-Type": "application/json"
+              },
+
+              // Çeviri için gerekli bilgiler
+              body: JSON.stringify({
+                  q: englishText,    // Çevrilecek metin
+                  source: "en",      // Kaynak olan dil (İngilizce)
+                  target: "tr",      // Hedef olan dil (Türkçe)
+                  format: "text"     // Metnin formatı
+              })
+          });
+      })
+
+      // Çeviri API'sinden gelen cevap JSON'a çevrilir
+      .then(res => res.json())
+
+      // Türkçe çevrilmiş metin ekrana yazdırılır
+      .then(ceviri => {
+          document.getElementById("destekMesaji").innerText =
+            "💙 " + ceviri.translatedText;
+      })
+
+      // Herhangi bir hata olursa yedek mesaj gösterilir
+      .catch(() => {
+          document.getElementById("destekMesaji").innerText =
+            "💙 Yalnız değilsiniz, buradayız.";
+      });
+
+});
+
+
+</script>
+
+</section>
+
+    <footer>
+        <p align="center">&copy; 2025 SMA Psikolojik Destek Platformu. Tüm hakları saklıdır.</p>
+    </footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" 
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" 
+integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>

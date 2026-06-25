@@ -1,0 +1,86 @@
+
+/* Tüm sayfanın genel ayarları */
+body {
+    font-family: Arial, sans-serif;   /* Yazı tipi: Arial, yoksa sans-serif */
+    margin: 0;                        /* Tarayıcının normalde olan boşluklarını kaldırır */
+    background: #f4f6ff;              /* Sayfanın arka plan rengi */
+}
+
+/* Sayfanın en üstündeki başlık alanı */
+header {
+    background: #8B0000;              /* Koyu kırmızı arka plan */
+    color: white;                     /* Yazı rengi beyaz */
+    text-align: center;               /* Yazıyı ortalar */
+    padding: 20px;                    /* İç boşluk */
+}
+
+/* Menü (navbar) alanı */
+nav {
+    background: white;                /* Navbar arka planı beyaz */
+    padding: 15px;                    /* İç boşluk */
+    text-align: center;               /* Menü linklerini ortalar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif alt gölge efekti */
+}
+
+/* Navbar içindeki linkler */
+nav a {
+    margin: 0 15px;                   /* Linkler arası yatay boşluk */
+    text-decoration: none;            /* Alt çizgiyi kaldırır */
+    color: #540707;                   /* Koyu bordo yazı rengi */
+    font-weight: bold;                /* Yazıyı kalın yapar */
+}
+
+/* Sayfa içeriğinin bulunduğu ana alan */
+section {
+    width: 85%;                       /* Sayfanın %85’ini kaplar */
+    background: white;                /* Arka plan beyaz */
+    padding: 60px;                    /* İç boşluk yazılar kenara yapışmasın diye */
+    margin: 60px auto;                /* Alt-üst boşluk + ortalama */
+    border-radius: 10px;              /* Köşeleri yuvarlatır */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Kart görünümü için gölge */
+}
+
+/* Form elemanları (input, select, textarea) */
+input, select, textarea {
+    width: 700px;                     /* Sabit genişlik */
+    padding: 8px;                     /* İç boşluk */
+    margin: 40px auto;                /* alt-üst boşluk ve ortalama */
+    border-radius: 5px;               /* Köşeleri hafif yuvarlatır */
+    border: 1px solid #ccc;           /* Açık gri kenarlık */
+}
+
+/* Genel buton tasarımı */
+button {
+    background: #8B0000;              /* Koyu kırmızı arka plan */
+    color: white;                     /* Yazı rengi beyaz */
+    border: none;                     /* Kenarlık kaldırılır */
+    padding: 10px 15px;               /* İç boşluk */
+    margin-top: 15px;                 /* Üstten boşluk */
+    border-radius: 5px;               /* Köşeleri yuvarlatır */
+    cursor: pointer;                  /* Üzerine gelince el işareti */
+}
+
+/* Butonun üzerine gelince */
+button:hover {
+    background: #8B0000;              /* Renk aynı kalıyor */
+}
+
+/* Notların gösterildiği kutu */
+.notKutusu {
+    background: #e8edff;              /* Açık mavi arka plan */
+    padding: 15px;                    /* İç boşluk */
+    border-radius: 8px;               /* Köşeleri yuvarlatır */
+    margin-bottom: 15px;              /* Alt boşluk */
+}
+
+/* Yıldız ikonlarının genel hali */
+.yildiz {
+    font-size: 20px;                  /* Yıldız boyutu */
+    cursor: pointer;                  /* Tıklanabilir olduğunu gösterir */
+    color: gray;                      /* Seçilmemiş yıldız rengi */
+}
+
+/* Seçili (aktif) yıldız */
+.yildiz.secili {
+    color: gold;                      /* Seçilen yıldızlar altın sarısı olur */
+}
