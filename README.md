@@ -1,4 +1,6 @@
-🎗️ SMA PSİKOLOJİK DESTEK PLATFORMU, çocuklarına SMA (Spinal Müsküler Atrofi) teşhisi konmuş aile bireylerinin bu zorlu süreçte psikolojik olarak destek alabilmeleri, birbirlerine kenetlenip dayanışma içinde olabilmeleri amacıyla geliştirilmiş web tabanlı bir etkileşim platformudur. Proje; bu hastalığı deneyimlemiş tecrübeli aileler ile tanı sürecine yeni dahil olmuş aileleri dijital bir köprüyle buluşturur.
+🎗️ SMA PSİKOLOJİK DESTEK PLATFORMU
+
+SMA Psikolojik Destek Platformu, çocuklarına SMA (Spinal Müsküler Atrofi) teşhisi konmuş aile bireylerinin bu zorlu süreçte psikolojik olarak destek alabilmeleri, birbirlerine kenetlenip dayanışma içinde olabilmeleri amacıyla geliştirilmiş web tabanlı bir etkileşim platformudur. Proje; bu hastalığı deneyimlemiş tecrübeli aileler ile tanı sürecine yeni dahil olmuş aileleri dijital bir köprüyle buluşturur.
 
 
 🫂 Projenin Çözüm Getirdiği Problem DurumuSMA süreci, fiziksel boyutunun yanı sıra aileler için sosyal ve psikolojik açıdan çok yıpratıcı bir süreçtir.Platformumuz, özellikle şu kritik problemlere doğrudan çözümler üretmektedir:
